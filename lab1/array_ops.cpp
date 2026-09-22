@@ -14,6 +14,9 @@ void array_delete(int*& arr) {
 }
 
 void array_resize(int*& arr, std::size_t size, std::size_t new_size) {
+    if (arr == nullptr) {
+        throw std::invalid_argument("arr is nullptr");
+    }
     int* new_arr = new int[new_size]();
 
     for (int i = 0; i < std::min(size, new_size); ++i) {
@@ -25,6 +28,9 @@ void array_resize(int*& arr, std::size_t size, std::size_t new_size) {
 }
 
 void array_insert(int*& arr, std::size_t& size, std::size_t pos, int value) {
+    if (arr == nullptr) {
+        throw std::invalid_argument("arr is nullptr");
+    }
     if (pos > size) {
         throw std::invalid_argument("pos value should be less than or equal to size");
     }
@@ -38,6 +44,9 @@ void array_insert(int*& arr, std::size_t& size, std::size_t pos, int value) {
 }
 
 void array_remove(int*& arr, std::size_t& size, std::size_t pos) {
+    if (arr == nullptr) {
+        throw std::invalid_argument("arr is nullptr");
+    }
     if (pos >= size) {
         throw std::invalid_argument("pos value should be less than arr size");
     }
@@ -50,6 +59,10 @@ void array_remove(int*& arr, std::size_t& size, std::size_t pos) {
 }
 
 void array_print(const int* arr, const std::size_t size) {
+    if (arr == nullptr) {
+        std::cout << "nullptr" << std::endl;
+        return;
+    }
     std::cout << "[";
     for (int i = 0; i < size; ++i) {
         std::cout << arr[i];
@@ -67,6 +80,9 @@ void reverse(int* arr, const std::size_t size) {
 }
 
 void array_rotate_left(int*& arr, const std::size_t size, std::size_t k) {
+    if (arr == nullptr) {
+        throw std::invalid_argument("arr is nullptr");
+    }
     for (int i = 0; i < size; ++i) {
         int key = arr[i];
         int j = i - 1;

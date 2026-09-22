@@ -114,3 +114,20 @@ TEST(ArrayOpsTest, CorrectRotateLeft) {
 
     array_delete(arr);
 }
+
+TEST(ArrayNullptrTest, OpsWorkCorrectlyWithNullptrProvided) {
+    int *arr = nullptr;
+    std::size_t size = 0;
+
+    ASSERT_NO_THROW({ array_print(arr, 0); });
+    ASSERT_THROW({ array_insert(arr, size, 0, 1); }, std::invalid_argument);
+    ASSERT_THROW({ array_rotate_left(arr, size, 2); }, std::invalid_argument);
+    ASSERT_THROW({ array_remove(arr, size, 0); }, std::invalid_argument);
+}
+
+TEST(ArrayOpsTest, RemoveThrowWhenIncorrectPosProvided) {
+    std::size_t size = 0;
+    int* arr = array_create(size);
+
+    ASSERT_THROW({ array_remove(arr, size, 0); }, std::invalid_argument);
+}

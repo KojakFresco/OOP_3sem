@@ -3,10 +3,10 @@
 #include <array_ops.h>
 
 int main() {
-    // system("chcp 65001 > nul");
+    // system("chcp 65001 > nul"); // comment if reading from file
 
-    int *arr;
-    std::size_t size, new_size;
+    int *arr = nullptr;
+    std::size_t size = 0, new_size;
 
     int cmd, value, pos;
 
@@ -40,6 +40,7 @@ int main() {
                 std::cout << "Введите новый размер массива" << std::endl;
                 std::cin >> new_size;
                 array_resize(arr, size, new_size);
+                size = new_size;
                 break;
             }
             case 6: {
